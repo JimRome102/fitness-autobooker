@@ -1,0 +1,70 @@
+{
+  "name": "fitness-autobooker-backend",
+  "version": "1.0.0",
+  "description": "FitBook Auto - Backend API and automation engine for fitness class booking",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "db:migrate": "tsx src/scripts/migrate.ts",
+    "booking:run": "tsx src/automation/core/SchedulerService.ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "puppeteer": "^21.11.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "@supabase/supabase-js": "^2.39.3",
+    "resend": "^3.0.0",
+    "winston": "^3.11.0",
+    "zod": "^3.22.4",
+    "dotenv": "^16.4.0",
+    "date-fns": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "prettier": "^3.2.4",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "ts-jest": "^29.1.1",
+    "supertest": "^6.3.4",
+    "@types/supertest": "^6.0.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "author": "FitBook Auto Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/fitness-autobooker.git"
+  },
+  "keywords": [
+    "fitness",
+    "automation",
+    "booking",
+    "puppeteer",
+    "api",
+    "express",
+    "nodejs"
+  ]
+}
