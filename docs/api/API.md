@@ -821,5 +821,5 @@ http://localhost:3001
 
 For API support, please:
 1. Check this documentation
-2. Review [GitHub Issues](https://github.com/yourusername/fitness-autobooker/issues)
+2. Review [GitHub Issues](https://github.com/jimrome102/fitness-autobooker/issues)
 3. Contact: api-support@fitbookauto.com

@@ -49,7 +49,7 @@ fitness-autobooker/
 #### 1.1 Push to GitHub
 ```bash
 # Create repository on GitHub first, then:
-git remote add origin https://github.com/yourusername/fitness-autobooker.git
+git remote add origin https://github.com/jimrome102/fitness-autobooker.git
 git branch -M main
 git push -u origin main
 ```
@@ -446,8 +446,8 @@ app.use(cors({
 - [Express Docs](https://expressjs.com/)
 
 ### Community
-- [GitHub Discussions](https://github.com/yourusername/fitness-autobooker/discussions)
-- [Issues](https://github.com/yourusername/fitness-autobooker/issues)
+- [GitHub Discussions](https://github.com/jimrome102/fitness-autobooker/discussions)
+- [Issues](https://github.com/jimrome102/fitness-autobooker/issues)
 
 ---
 

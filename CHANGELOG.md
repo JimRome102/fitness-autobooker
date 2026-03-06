@@ -169,7 +169,7 @@ N/A (initial release)
 **Upgrade Instructions:**
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/fitness-autobooker.git
+git clone https://github.com/jimrome102/fitness-autobooker.git
 cd fitness-autobooker
 
 # Install dependencies
@@ -184,11 +184,11 @@ npm run dev
 ```
 
 **Contributors:**
-- Initial development by [Your Name]
+- Initial development by [Jim Rome]
 - Special thanks to early testers and feedback providers
 
 **Full Changelog:**
-https://github.com/yourusername/fitness-autobooker/compare/v0.2.0...v1.0.0
+https://github.com/jimrome102/fitness-autobooker/compare/v0.2.0...v1.0.0
 
 ---
 
@@ -217,13 +217,13 @@ Changes are grouped into:
 
 ## Links
 
-- [Compare Versions](https://github.com/yourusername/fitness-autobooker/compare)
-- [Release Tags](https://github.com/yourusername/fitness-autobooker/releases)
-- [Milestones](https://github.com/yourusername/fitness-autobooker/milestones)
+- [Compare Versions](https://github.com/jimrome102/fitness-autobooker/compare)
+- [Release Tags](https://github.com/jimrome102/fitness-autobooker/releases)
+- [Milestones](https://github.com/jimrome102/fitness-autobooker/milestones)
 
 ---
 
-[Unreleased]: https://github.com/yourusername/fitness-autobooker/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/yourusername/fitness-autobooker/compare/v0.2.0...v1.0.0
-[0.2.0]: https://github.com/yourusername/fitness-autobooker/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/yourusername/fitness-autobooker/releases/tag/v0.1.0
+[Unreleased]: https://github.com/jimrome102/fitness-autobooker/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/jimrome102/fitness-autobooker/compare/v0.2.0...v1.0.0
+[0.2.0]: https://github.com/jimrome102/fitness-autobooker/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/jimrome102/fitness-autobooker/releases/tag/v0.1.0
