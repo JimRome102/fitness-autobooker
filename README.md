@@ -202,7 +202,7 @@ See [ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) for detailed technical 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/fitness-autobooker.git
+git clone https://github.com/jimrome102/fitness-autobooker.git
 cd fitness-autobooker
 
 # Install frontend dependencies
@@ -402,11 +402,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-**Project Maintainer**: Your Name
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+**Project Maintainer**: Jim Rome
+- GitHub: [@jimrome102](https://github.com/jimrome102)
+- Email: romejim@gmail.com
 
-**Project Link**: [https://github.com/yourusername/fitness-autobooker](https://github.com/yourusername/fitness-autobooker)
+**Project Link**: [https://github.com/jimrome102/fitness-autobooker](https://github.com/jimrome102/fitness-autobooker)
 
 ---
 
@@ -414,6 +414,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ☕ and 💪 by someone tired of waking up at midnight**
 
-[Report Bug](https://github.com/yourusername/fitness-autobooker/issues) · [Request Feature](https://github.com/yourusername/fitness-autobooker/issues)
+[Report Bug](https://github.com/jimrome102/fitness-autobooker/issues) · [Request Feature](https://github.com/jimrome102/fitness-autobooker/issues)
 
 </div>

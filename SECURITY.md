@@ -21,7 +21,7 @@ We take the security of FitBook Auto seriously. If you believe you have found a 
 
 Instead, please report vulnerabilities through one of the following channels:
 
-1. **Email**: security@fitbookauto.com (preferred)
+1. **Email**: romejim@gmail.com (preferred)
 2. **GitHub Security Advisory**: Use the "Report a vulnerability" feature in the Security tab
 
 ### What to Include
@@ -262,7 +262,7 @@ We currently do not have a formal bug bounty program. However:
 
 For security-related questions (non-vulnerabilities):
 - Open a GitHub Discussion
-- Email: security@fitbookauto.com
+- Email: romejim@gmail.com
 
 For vulnerabilities, please follow the reporting process above.
 
