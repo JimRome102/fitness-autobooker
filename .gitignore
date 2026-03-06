@@ -88,12 +88,15 @@ pnpm-lock.yaml
 *.old
 
 # API keys and secrets (extra safety)
-*secret*
-*SECRET*
-*credentials*
-*CREDENTIALS*
+*secret.json
+*SECRET.json
+credentials.json
+credentials.txt
+CREDENTIALS.json
 api-keys.txt
 secrets.json
+*.key
+*.pem
 
 # Local development
 .local/
