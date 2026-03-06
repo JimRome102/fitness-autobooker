@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: fitbook-auto-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: DEFAULT_USER_ID
+        value: 00000000-0000-0000-0000-000000000001
+      - key: FRONTEND_URL
+        value: https://frontend-blue-nine-41.vercel.app
+      - key: PUPPETEER_HEADLESS
+        value: true
