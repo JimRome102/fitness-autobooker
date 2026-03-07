@@ -6,7 +6,7 @@ import { useCredentials, useCreateCredential, useDeleteCredential } from '@/hook
 import { Platform } from '@/utils/api';
 
 export default function CredentialsPage() {
-  const { data: credentials, isLoading } = useCredentials();
+  const { data: credentials } = useCredentials();
   const createMutation = useCreateCredential();
   const deleteMutation = useDeleteCredential();
 
