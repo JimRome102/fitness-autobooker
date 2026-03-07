@@ -11,7 +11,7 @@ export default function HistoryPage() {
     result?: BookingResult;
   }>({});
 
-  const { data: history, isLoading } = useBookingHistory(filters);
+  const { data: history } = useBookingHistory(filters);
   const runBookingMutation = useRunBooking();
 
   const handleRunBooking = async (dryRun: boolean = false) => {
@@ -41,12 +41,12 @@ export default function HistoryPage() {
   const getResultBadge = (result: BookingResult) => {
     switch (result) {
       case 'success':
-        return 'bg-success-100 text-success-800';
+        return 'bg-green-500/20 border-green-500/30 text-green-300';
       case 'waitlisted':
-        return 'bg-warning-100 text-warning-800';
+        return 'bg-yellow-500/20 border-yellow-500/30 text-yellow-300';
       case 'failed':
       case 'error':
-        return 'bg-error-100 text-error-800';
+        return 'bg-red-500/20 border-red-500/30 text-red-300';
     }
   };
 
@@ -63,30 +63,35 @@ export default function HistoryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="bg-black/20 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/" className="text-2xl font-bold text-primary-600">
-              FitBook Auto
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">💪</span>
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                FitBook Auto
+              </h1>
             </Link>
             <div className="flex space-x-4">
               <Link
                 href="/credentials"
-                className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
               >
                 Credentials
               </Link>
               <Link
                 href="/preferences"
-                className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
               >
                 Preferences
               </Link>
               <Link
                 href="/history"
-                className="text-primary-600 border-b-2 border-primary-600 px-3 py-2 text-sm font-medium"
+                className="text-white border-b-2 border-purple-400 px-3 py-2 text-sm font-medium"
               >
                 History
               </Link>
@@ -97,25 +102,25 @@ export default function HistoryPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="sm:flex sm:items-center sm:justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Booking History</h1>
-            <p className="mt-2 text-sm text-gray-700">
+            <h1 className="text-4xl font-bold text-white mb-2">Booking History</h1>
+            <p className="text-gray-300">
               View all past booking attempts and their results.
             </p>
           </div>
-          <div className="mt-4 sm:mt-0 flex space-x-2">
+          <div className="mt-4 sm:mt-0 flex gap-2">
             <button
               onClick={() => handleRunBooking(true)}
               disabled={runBookingMutation.isPending}
-              className="inline-flex items-center px-4 py-2 border border-primary-600 rounded-md shadow-sm text-sm font-medium text-primary-600 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
+              className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium rounded-lg transition-all disabled:opacity-50"
             >
               Dry Run
             </button>
             <button
               onClick={() => handleRunBooking(false)}
               disabled={runBookingMutation.isPending}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50"
             >
               {runBookingMutation.isPending ? 'Running...' : 'Run Booking'}
             </button>
@@ -123,129 +128,126 @@ export default function HistoryPage() {
         </div>
 
         {/* Filters */}
-        <div className="mt-6 bg-white p-4 rounded-lg shadow-sm flex flex-wrap gap-4">
-          <div>
-            <label htmlFor="platform-filter" className="block text-sm font-medium text-gray-700">
-              Platform
-            </label>
-            <select
-              id="platform-filter"
-              value={filters.platform || ''}
-              onChange={(e) =>
-                setFilters({
-                  ...filters,
-                  platform: e.target.value ? (e.target.value as Platform) : undefined,
-                })
-              }
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border"
-            >
-              <option value="">All Platforms</option>
-              <option value="classpass">ClassPass</option>
-              <option value="mindbody">Mindbody</option>
-              <option value="barrys">Barrys</option>
-              <option value="slt">SLT</option>
-              <option value="y7">Y7</option>
-            </select>
-          </div>
+        <div className="mb-6 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="platform-filter" className="block text-sm font-medium text-gray-300 mb-2">
+                Platform
+              </label>
+              <select
+                id="platform-filter"
+                value={filters.platform || ''}
+                onChange={(e) =>
+                  setFilters({
+                    ...filters,
+                    platform: e.target.value ? (e.target.value as Platform) : undefined,
+                  })
+                }
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+              >
+                <option value="">All Platforms</option>
+                <option value="classpass">ClassPass</option>
+                <option value="mindbody">Mindbody</option>
+                <option value="barrys">Barrys</option>
+                <option value="slt">SLT</option>
+                <option value="y7">Y7</option>
+              </select>
+            </div>
 
-          <div>
-            <label htmlFor="result-filter" className="block text-sm font-medium text-gray-700">
-              Result
-            </label>
-            <select
-              id="result-filter"
-              value={filters.result || ''}
-              onChange={(e) =>
-                setFilters({
-                  ...filters,
-                  result: e.target.value ? (e.target.value as BookingResult) : undefined,
-                })
-              }
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border"
-            >
-              <option value="">All Results</option>
-              <option value="success">Success</option>
-              <option value="waitlisted">Waitlisted</option>
-              <option value="failed">Failed</option>
-            </select>
+            <div>
+              <label htmlFor="result-filter" className="block text-sm font-medium text-gray-300 mb-2">
+                Result
+              </label>
+              <select
+                id="result-filter"
+                value={filters.result || ''}
+                onChange={(e) =>
+                  setFilters({
+                    ...filters,
+                    result: e.target.value ? (e.target.value as BookingResult) : undefined,
+                  })
+                }
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+              >
+                <option value="">All Results</option>
+                <option value="success">Success</option>
+                <option value="waitlisted">Waitlisted</option>
+                <option value="failed">Failed</option>
+              </select>
+            </div>
           </div>
         </div>
 
         {/* History List */}
-        <div className="mt-6">
-          {isLoading ? (
-            <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            </div>
-          ) : history && history.length > 0 ? (
-            <div className="bg-white shadow overflow-hidden sm:rounded-md">
-              <ul className="divide-y divide-gray-200">
-                {history.map((record) => (
-                  <li key={record.id}>
-                    <div className="px-4 py-4 sm:px-6 hover:bg-gray-50">
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center">
-                            <span className="text-2xl mr-3">{getResultIcon(record.result)}</span>
-                            <div>
-                              <h3 className="text-lg font-medium text-gray-900">
-                                {record.class_name}
-                              </h3>
-                              <p className="text-sm text-gray-500">
-                                {record.studio_name} · {' '}
-                                <span className="capitalize">{record.platform}</span>
-                              </p>
-                            </div>
-                          </div>
-                          <div className="mt-2 grid grid-cols-2 gap-x-4 text-sm text-gray-500">
-                            <div>
-                              <p>
-                                <span className="font-medium">Class Time:</span>{' '}
-                                {new Date(record.class_datetime).toLocaleString()}
-                              </p>
-                              {record.instructor && (
-                                <p>
-                                  <span className="font-medium">Instructor:</span> {record.instructor}
-                                </p>
-                              )}
-                            </div>
-                            <div>
-                              <p>
-                                <span className="font-medium">Attempted:</span>{' '}
-                                {new Date(record.attempt_timestamp).toLocaleString()}
-                              </p>
-                              <p>
-                                <span className="font-medium">Duration:</span>{' '}
-                                {(record.execution_time_ms / 1000).toFixed(1)}s
-                              </p>
-                            </div>
-                          </div>
-                          {record.error_message && (
-                            <div className="mt-2 text-sm text-error-600">
-                              <span className="font-medium">Error:</span> {record.error_message}
-                            </div>
-                          )}
-                        </div>
-                        <div className="ml-4">
-                          <span
-                            className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getResultBadge(
-                              record.result
-                            )}`}
-                          >
+        <div>
+          {history && history.length > 0 ? (
+            <div className="space-y-4">
+              {history.map((record) => (
+                <div
+                  key={record.id}
+                  className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-200"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                    <div className="flex items-start gap-4 flex-1">
+                      <div className="text-4xl mt-1">{getResultIcon(record.result)}</div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2 flex-wrap">
+                          <h3 className="text-xl font-bold text-white">{record.class_name}</h3>
+                          <span className={`px-3 py-1 border text-xs font-medium rounded-full ${getResultBadge(record.result)}`}>
                             {record.result}
                           </span>
                         </div>
+                        <p className="text-gray-400 text-sm mb-3">
+                          {record.studio_name} · <span className="capitalize">{record.platform}</span>
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-300">
+                          <div>
+                            <span className="text-gray-400">Class Time:</span>{' '}
+                            {new Date(record.class_datetime).toLocaleString()}
+                          </div>
+                          {record.instructor && (
+                            <div>
+                              <span className="text-gray-400">Instructor:</span> {record.instructor}
+                            </div>
+                          )}
+                          <div>
+                            <span className="text-gray-400">Attempted:</span>{' '}
+                            {new Date(record.attempt_timestamp).toLocaleString()}
+                          </div>
+                          <div>
+                            <span className="text-gray-400">Duration:</span>{' '}
+                            {(record.execution_time_ms / 1000).toFixed(1)}s
+                          </div>
+                        </div>
+                        {record.error_message && (
+                          <div className="mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                            <p className="text-sm text-red-300">
+                              <span className="font-medium">Error:</span> {record.error_message}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </li>
-                ))}
-              </ul>
+                  </div>
+                </div>
+              ))}
             </div>
           ) : (
-            <div className="text-center bg-white rounded-lg shadow py-12">
-              <p className="text-gray-500">
-                No booking history yet. Run a booking to see results here!
+            <div className="text-center bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl py-16">
+              <div className="w-20 h-20 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-4xl">📈</span>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">No booking history yet</h3>
+              <p className="text-gray-400 mb-6">
+                Run a booking to see results here!
               </p>
+              <button
+                onClick={() => handleRunBooking(false)}
+                disabled={runBookingMutation.isPending}
+                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              >
+                Run First Booking
+              </button>
             </div>
           )}
         </div>
