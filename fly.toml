@@ -1,0 +1,23 @@
+app = "fitbook-auto"
+primary_region = "sea"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "8080"
+  PUPPETEER_HEADLESS = "true"
+  DEFAULT_USER_ID = "00000000-0000-0000-0000-000000000001"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
