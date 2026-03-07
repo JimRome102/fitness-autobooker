@@ -38,30 +38,35 @@ export default function CredentialsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="bg-black/20 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/" className="text-2xl font-bold text-primary-600">
-              FitBook Auto
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">💪</span>
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                FitBook Auto
+              </h1>
             </Link>
             <div className="flex space-x-4">
               <Link
                 href="/credentials"
-                className="text-primary-600 border-b-2 border-primary-600 px-3 py-2 text-sm font-medium"
+                className="text-white border-b-2 border-purple-400 px-3 py-2 text-sm font-medium"
               >
                 Credentials
               </Link>
               <Link
                 href="/preferences"
-                className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
               >
                 Preferences
               </Link>
               <Link
                 href="/history"
-                className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
               >
                 History
               </Link>
@@ -72,152 +77,153 @@ export default function CredentialsPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="sm:flex sm:items-center sm:justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Platform Credentials</h1>
-            <p className="mt-2 text-sm text-gray-700">
+            <h1 className="text-4xl font-bold text-white mb-2">Platform Credentials</h1>
+            <p className="text-gray-300">
               Manage your login credentials for ClassPass, Mindbody, and other platforms.
             </p>
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="mt-4 sm:mt-0 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+            className="mt-4 sm:mt-0 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
           >
-            {showForm ? 'Cancel' : 'Add Credential'}
+            {showForm ? 'Cancel' : '+ Add Credential'}
           </button>
         </div>
 
         {/* Add Credential Form */}
         {showForm && (
-          <div className="mt-8 bg-white shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
-                Add New Credential
-              </h3>
-              <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-                <div>
-                  <label htmlFor="platform" className="block text-sm font-medium text-gray-700">
-                    Platform
-                  </label>
-                  <select
-                    id="platform"
-                    value={formData.platform}
-                    onChange={(e) =>
-                      setFormData({ ...formData, platform: e.target.value as Platform })
-                    }
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border"
-                  >
-                    <option value="classpass">ClassPass</option>
-                    <option value="mindbody">Mindbody</option>
-                    <option value="barrys">Barrys Bootcamp</option>
-                    <option value="slt">SLT</option>
-                    <option value="y7">Y7 Studio</option>
-                  </select>
-                </div>
+          <div className="mb-8 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-white mb-6">Add New Credential</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="platform" className="block text-sm font-medium text-gray-300 mb-2">
+                  Platform
+                </label>
+                <select
+                  id="platform"
+                  value={formData.platform}
+                  onChange={(e) =>
+                    setFormData({ ...formData, platform: e.target.value as Platform })
+                  }
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                >
+                  <option value="classpass">ClassPass</option>
+                  <option value="mindbody">Mindbody</option>
+                  <option value="barrys">Barrys Bootcamp</option>
+                  <option value="slt">SLT</option>
+                  <option value="y7">Y7 Studio</option>
+                </select>
+              </div>
 
-                <div>
-                  <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                    Username / Email
-                  </label>
-                  <input
-                    type="text"
-                    id="username"
-                    required
-                    value={formData.username}
-                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border"
-                  />
-                </div>
+              <div>
+                <label htmlFor="username" className="block text-sm font-medium text-gray-300 mb-2">
+                  Username / Email
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  required
+                  value={formData.username}
+                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                  placeholder="your@email.com"
+                />
+              </div>
 
-                <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    required
-                    value={formData.password}
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border"
-                  />
-                </div>
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  required
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                  placeholder="••••••••"
+                />
+              </div>
 
-                <div className="flex justify-end space-x-3">
-                  <button
-                    type="button"
-                    onClick={() => setShowForm(false)}
-                    className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={createMutation.isPending}
-                    className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
-                  >
-                    {createMutation.isPending ? 'Saving...' : 'Save Credential'}
-                  </button>
-                </div>
-              </form>
-            </div>
+              <div className="flex justify-end space-x-3">
+                <button
+                  type="button"
+                  onClick={() => setShowForm(false)}
+                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg border border-white/20 transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={createMutation.isPending}
+                  className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg shadow-lg disabled:opacity-50 transition-all"
+                >
+                  {createMutation.isPending ? 'Saving...' : 'Save Credential'}
+                </button>
+              </div>
+            </form>
           </div>
         )}
 
         {/* Credentials List */}
-        <div className="mt-8">
-          {isLoading ? (
-            <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            </div>
-          ) : credentials && credentials.length > 0 ? (
-            <div className="bg-white shadow overflow-hidden sm:rounded-md">
-              <ul className="divide-y divide-gray-200">
-                {credentials.map((credential) => (
-                  <li key={credential.id}>
-                    <div className="px-4 py-4 sm:px-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0">
-                            <div className="h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center">
-                              <span className="text-primary-600 font-semibold text-sm uppercase">
-                                {credential.platform.substring(0, 2)}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900 capitalize">
-                              {credential.platform}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {credential.is_active ? (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800">
-                                  Active
-                                </span>
-                              ) : (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                                  Inactive
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                        <button
-                          onClick={() => handleDelete(credential.id)}
-                          disabled={deleteMutation.isPending}
-                          className="ml-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-error-700 bg-error-100 hover:bg-error-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-error-500 disabled:opacity-50"
-                        >
-                          Delete
-                        </button>
-                      </div>
+        <div>
+          {credentials && credentials.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {credentials.map((credential) => (
+                <div
+                  key={credential.id}
+                  className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-200"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                      <span className="text-white font-bold text-lg uppercase">
+                        {credential.platform.substring(0, 2)}
+                      </span>
                     </div>
-                  </li>
-                ))}
-              </ul>
+                    {credential.is_active ? (
+                      <span className="px-3 py-1 bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-medium rounded-full">
+                        Active
+                      </span>
+                    ) : (
+                      <span className="px-3 py-1 bg-gray-500/20 border border-gray-500/30 text-gray-300 text-xs font-medium rounded-full">
+                        Inactive
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white capitalize mb-2">
+                    {credential.platform}
+                  </h3>
+
+                  <p className="text-gray-400 text-sm mb-4">
+                    Added {new Date(credential.created_at).toLocaleDateString()}
+                  </p>
+
+                  <button
+                    onClick={() => handleDelete(credential.id)}
+                    disabled={deleteMutation.isPending}
+                    className="w-full px-4 py-2 bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 text-red-300 font-medium rounded-lg transition-all disabled:opacity-50"
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
             </div>
           ) : (
-            <div className="text-center bg-white rounded-lg shadow py-12">
-              <p className="text-gray-500">No credentials yet. Add one to get started!</p>
+            <div className="text-center bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl py-16">
+              <div className="w-20 h-20 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-4xl">🔐</span>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">No credentials yet</h3>
+              <p className="text-gray-400 mb-6">Add your first platform credential to get started</p>
+              <button
+                onClick={() => setShowForm(true)}
+                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              >
+                + Add Credential
+              </button>
             </div>
           )}
         </div>
