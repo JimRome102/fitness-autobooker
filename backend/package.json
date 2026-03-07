@@ -1,6 +1,7 @@
 {
   "name": "fitness-autobooker-backend",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "FitBook Auto - Backend API and automation engine for fitness class booking",
   "main": "dist/index.js",
   "scripts": {
@@ -49,7 +50,7 @@
     "@types/supertest": "^6.0.2"
   },
   "engines": {
-    "node": ">=20.0.0",
+    "node": "20.x",
     "npm": ">=10.0.0"
   },
   "author": "FitBook Auto Contributors",
